@@ -10,7 +10,7 @@ class QUdpSocket;
 class QAction;
 QT_END_NAMESPACE
 
-class receiver : public QWidget
+class receiver : public QObject
 {
      Q_OBJECT
 public:

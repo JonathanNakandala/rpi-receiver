@@ -5,9 +5,9 @@ void receiver::receive()
 {
     udpSocket = new QUdpSocket();
     udpSocket->bind(45455, QUdpSocket::ShareAddress);
-    connect(udpSocket, SIGNAL(readyRead()),
+     QObject::connect(udpSocket, SIGNAL(readyRead()),
             this, SLOT(checker()));
-        qDebug() << "Gut 猫" << endl << endl;
+        qDebug() << "猫" << endl << endl;
 
 }
 

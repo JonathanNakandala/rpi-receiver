@@ -6,7 +6,7 @@
 
 QT       += core
 QT += network widgets
-//QT       -= gui
+QT       -= gui
 
 TARGET = rpi-receiver
 CONFIG   += console
