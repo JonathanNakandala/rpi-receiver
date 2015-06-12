@@ -1,6 +1,11 @@
 #include "control.h"
+control::control()
 
-control::control(QObject *parent) :
-    QObject(parent)
 {
+}
+
+void control::getStatus(qint8 pin)
+{
+    QString abi = QSysInfo::buildAbi();
+     //qDebug() << abi << endl << endl;
 }

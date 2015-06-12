@@ -1,10 +1,22 @@
 #ifndef TRANSMITTER_H
 #define TRANSMITTER_H
+#include <QtNetwork>
 
-class transmitter
+#include <QWidget>
+QT_BEGIN_NAMESPACE
+class QLabel;
+class QPushButton;
+class QUdpSocket;
+class QAction;
+QT_END_NAMESPACE
+class transmitter : public QObject
 {
+     Q_OBJECT
 public:
     transmitter();
+    void connect(QByteArray datagram, QHostAddress clientIP, qint16 clientPort);
+private:
+    QUdpSocket *udpSocket;
 };
 
 #endif // TRANSMITTER_H

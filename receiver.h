@@ -18,6 +18,7 @@ public:
     void receive();
     //void checker();
     void processPendingDatagrams();
+    //void trasmit()
 private slots:
     void checker();
 private:

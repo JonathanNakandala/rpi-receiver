@@ -3,15 +3,24 @@
 
 #include <QObject>
 
+QT_BEGIN_NAMESPACE
+class QLabel;
+class QPushButton;
+class QUdpSocket;
+class QAction;
+QT_END_NAMESPACE
+
+
 class control : public QObject
 {
     Q_OBJECT
 public:
-    explicit control(QObject *parent = 0);
+    control();
+    void getStatus(qint8 pin);
 
 signals:
 
-public slots:
+private slots:
 
 };
 

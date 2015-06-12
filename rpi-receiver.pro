@@ -16,9 +16,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    receiver.cpp
+    receiver.cpp \
+    transmitter.cpp \
+    control.cpp
 
 HEADERS += \
-    receiver.h
+    receiver.h \
+    transmitter.h \
+    control.h
 
 INSTALLS += target
