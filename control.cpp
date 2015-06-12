@@ -17,7 +17,7 @@ void control::getStatus(qint8 pin)
   QProcess *gpioPi = new QProcess(parent);
   gpioPi->start(program,arguments);
   gpioPi->waitForFinished(2000);
-  QString output(gpioPi->readAllStandardOutput());
+  QString output(gpioPi->readAll());
   qDebug() << "This is the output" << output << endl;
 
 
