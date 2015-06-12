@@ -1,11 +1,11 @@
 #include <QCoreApplication>
 #include <QDebug>
 #include <QtNetwork>
-#include <qsysinfo.h>
 
 #include <QObject>
 #include "receiver.h"
 #include "transmitter.h"
+#include "control.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +18,8 @@ int main(int argc, char *argv[])
 
     lol.receive();
     qDebug() << "END HERE PLZ" << endl << endl;
-    QString abi = QSysInfo::buildAbi();
-     qDebug() << abi << endl << endl;
+
+    control lol2;
+    lol2.getStatus(0);
     return app.exec();
 }
