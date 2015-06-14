@@ -1,6 +1,7 @@
+#include <globalVar.h>
 #include "transmitter.h"
 #include <QtNetwork>
-
+#include <control.h>
 transmitter::transmitter()
 {
 
@@ -18,4 +19,17 @@ void transmitter::connect(QByteArray datagram, QHostAddress clientIP, qint16 cli
 
     }
 
+}
+
+void transmitter::pinStatus()
+{
+    control contol;
+    for(int i = 0; i < 3; i = i+1)
+    {
+        int returnValue;
+        returnValue = contol.getStatus(i);
+        deviceStatusArray[i] = returnValue;
+      qDebug() << "Value of Pin " << i << "is" << deviceStatusArray[i] << endl;
+
+    }
 }

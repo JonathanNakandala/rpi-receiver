@@ -1,7 +1,7 @@
 #include "receiver.h"
 #include <QtNetwork>
 #include "transmitter.h"
-
+#include <control.h>
 void receiver::receive()
 {
     udpSocket = new QUdpSocket();
@@ -26,6 +26,7 @@ void receiver::checker()
       udpSocket->readDatagram(datagram.data(), datagram.size(),
                               &sender, &senderPort);
       qDebug() << datagram << endl ;
+
       transmitterIns.connect(datagram,sender,senderPort);
 
 

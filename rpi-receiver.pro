@@ -23,6 +23,7 @@ SOURCES += main.cpp \
 HEADERS += \
     receiver.h \
     transmitter.h \
-    control.h
+    control.h \
+    globalVar.h
 
 INSTALLS += target

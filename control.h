@@ -16,7 +16,7 @@ class control : public QObject
     Q_OBJECT
 public:
     control();
-    void getStatus(qint8 pin);
+    int getStatus(qint8 pin);
 
 signals:
 
