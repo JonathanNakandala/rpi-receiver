@@ -16,14 +16,15 @@ void transmitter::connect(QByteArray datagram, QHostAddress clientIP, qint16 cli
     {
         qDebug() << "I like Toast 10Q" << endl ;
         udpSocket->writeDatagram(connectedReply.data(),connectedReply.size(),clientIP,clientPort);
-        pinStatus();
+        pinStatus(clientIP, clientPort);
     }
 
 }
 
-void transmitter::pinStatus()
+void transmitter::pinStatus(QHostAddress clientIP, qint16 clientPort)
 {
     control contol;
+    udpSocket = new QUdpSocket(this);
     for(int i = 0; i < 2; i = i+1)
     {
         int returnValue;
@@ -32,4 +33,10 @@ void transmitter::pinStatus()
       qDebug() << "Value of Pin " << i << "is" << deviceStatusArray[i] << endl;
 
     }
+        // Convert pin statuses to be transmitted
+        QString str0 = QString::number(deviceStatusArray[0]);
+        QString str1 = QString::number(deviceStatusArray[1]);
+        QByteArray deviceStatus = str0.toUtf8() + str1.toUtf8();
+        qDebug() << deviceStatus;
+        udpSocket->writeDatagram(deviceStatus.data(),deviceStatus.size(),clientIP,clientPort);
 }

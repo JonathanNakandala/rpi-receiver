@@ -15,7 +15,7 @@ class transmitter : public QObject
 public:
     transmitter();
     void connect(QByteArray datagram, QHostAddress clientIP, qint16 clientPort);
-    void pinStatus();
+    void pinStatus(QHostAddress clientIP, qint16 clientPort);
 private:
     QUdpSocket *udpSocket;
 };

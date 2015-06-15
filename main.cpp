@@ -6,7 +6,7 @@
 
 #include <QObject>
 
-int deviceStatusArray [2] = {0,0};
+qint8 deviceStatusArray [2] = {0,0};
 #include "receiver.h"
 #include "transmitter.h"
 #include "control.h"
