@@ -11,7 +11,8 @@ QT       -= gui
 TARGET = rpi-receiver
 CONFIG   += console
 CONFIG   += app_bundle
-
+CONFIG += static
+CONFIG += staticlib
 TEMPLATE = app
 
 
@@ -26,4 +27,6 @@ HEADERS += \
     control.h \
     globalVar.h
 
+
+target.path = /home/pi/cop
 INSTALLS += target
