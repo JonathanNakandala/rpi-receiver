@@ -16,7 +16,7 @@ void transmitter::connect(QByteArray datagram, QHostAddress clientIP, qint16 cli
     {
         qDebug() << "I like Toast 10Q" << endl ;
         udpSocket->writeDatagram(connectedReply.data(),connectedReply.size(),clientIP,clientPort);
-
+        pinStatus();
     }
 
 }
@@ -24,7 +24,7 @@ void transmitter::connect(QByteArray datagram, QHostAddress clientIP, qint16 cli
 void transmitter::pinStatus()
 {
     control contol;
-    for(int i = 0; i < 3; i = i+1)
+    for(int i = 0; i < 2; i = i+1)
     {
         int returnValue;
         returnValue = contol.getStatus(i);
