@@ -28,13 +28,26 @@ void receiver::checker()
       qDebug() << datagram << endl ;
 
       transmitterIns.connect(datagram,sender,senderPort);
-
+       react(datagram);
 
 
   }
 }
 
-
+void receiver::react(QByteArray datagram)
+{
+    control control;
+    if(datagram == "Set on")
+    {
+        control.setPin(0,1);
+        control.setPin(1,1);
+    }
+    if(datagram == "Set off")
+    {
+        control.setPin(0,0);
+        control.setPin(1,0);
+    }
+}
 
 
 

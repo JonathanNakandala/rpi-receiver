@@ -19,6 +19,7 @@ public:
     //void checker();
     void processPendingDatagrams();
     //void trasmit()
+    void react(QByteArray datagram);
 private slots:
     void checker();
 private:
