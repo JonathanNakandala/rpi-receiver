@@ -37,16 +37,36 @@ void receiver::checker()
 void receiver::react(QByteArray datagram)
 {
     control control;
-    if(datagram == "Set on")
+    if(datagram == "All on")
     {
         control.setPin(0,1);
         control.setPin(1,1);
     }
-    if(datagram == "Set off")
+    if(datagram == "All off")
     {
         control.setPin(0,0);
         control.setPin(1,0);
     }
+
+    //Pin 0
+    if(datagram =="0 on")
+    {
+        control.setPin(0,1);
+    }
+    if(datagram =="0 off")
+    {
+        control.setPin(0,0);
+    }
+    //Pin 1
+    if(datagram =="1 on")
+    {
+        control.setPin(1,1);
+    }
+    if(datagram=="1 off")
+    {
+        control.setParent(1,0);
+    }
+
 }
 
 
