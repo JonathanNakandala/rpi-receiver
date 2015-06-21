@@ -1,3 +1,4 @@
+#include <globalVar.h>
 #include "receiver.h"
 #include <QtNetwork>
 #include "transmitter.h"
@@ -37,24 +38,16 @@ void receiver::checker()
 void receiver::react(QByteArray datagram)
 {
     control control;
-    if(datagram == "All on")
-    {
-        control.setPin(0,1);
-        control.setPin(1,1);
-    }
-    if(datagram == "All off")
-    {
-        control.setPin(0,0);
-        control.setPin(1,0);
-    }
+
     QString stringDatagram(datagram);
     QRegularExpression rx("[ ]");
     QStringList list = stringDatagram.split(rx, QString::SkipEmptyParts);
     QString pinSel = list.at(0);
     QString onOff = list.at(1);
-    qint8 pinNum = pinSel.toInt();
-    qint8 status;
 
+
+    // Convert Status from Off and On to 1 and 0
+    qint8 status;
     if(onOff == "on")
     {
         status = 1;
@@ -63,27 +56,22 @@ void receiver::react(QByteArray datagram)
         status = 0;
     }
 
-    control.setPin(pinNum,status);
+    // For loop to turn on or off all pins else set single pin
+    if(pinSel == "All")
+    {
+        for(int i = 0; i<NUMBER_OF_PINS;i++)
+        {
+            control.setPin(i,status);
+        }
+    }
+    else {
+            qint8 pinNum = pinSel.toInt();
+            control.setPin(pinNum,status);
+    }
+
+
 
     qDebug() << list;
-    //Pin 0
-//    if(datagram =="0 on")
-//    {
-//        control.setPin(0,1);
-//    }
-//    if(datagram =="0 off")
-//    {
-//        control.setPin(0,0);
-//    }
-//    //Pin 1
-//    if(datagram =="1 on")
-//    {
-//        control.setPin(1,1);
-//    }
-//    if(datagram=="1 off")
-//    {
-//        control.setPin(1,0);
-//    }
 
 }
 
