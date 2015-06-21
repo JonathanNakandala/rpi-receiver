@@ -41,5 +41,19 @@ void control::setPin(qint8 pin, qint8 value)
 
     gpioPi.start(programGpio,arguments);
     gpioPi.waitForFinished(2000);
+    arguments.clear();
+}
 
+void control::setWrite(qint8 pinTotal)
+{
+       QStringList arguments;
+    for (int i=0;i<pinTotal;i++)
+    {
+            QString i2 = QString::number(i);
+            arguments << "mode" << i2 << "out";
+            gpioPi.start(programGpio,arguments);
+            gpioPi.waitForFinished(2000);
+
+            arguments.clear();
+    }
 }

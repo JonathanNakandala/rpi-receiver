@@ -64,7 +64,7 @@ void receiver::react(QByteArray datagram)
     }
     if(datagram=="1 off")
     {
-        control.setParent(1,0);
+        control.setPin(1,0);
     }
 
 }

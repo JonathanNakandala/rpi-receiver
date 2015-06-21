@@ -25,7 +25,7 @@ void transmitter::pinStatus(QHostAddress clientIP, qint16 clientPort)
 {
     control contol;
     udpSocket = new QUdpSocket(this);
-    for(int i = 0; i < 2; i = i+1)
+    for(int i = 0; i < NUMBER_OF_PINS; i = i+1)
     {
         int returnValue;
         returnValue = contol.getStatus(i);

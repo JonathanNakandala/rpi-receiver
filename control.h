@@ -18,6 +18,7 @@ public:
     control();
     int getStatus(qint8 pin);
     void setPin(qint8 pin, qint8 value);
+    void setWrite(qint8 pinTotal);
 
 signals:
 

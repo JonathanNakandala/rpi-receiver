@@ -6,7 +6,7 @@
 
 #include <QObject>
 
-qint8 deviceStatusArray [2] = {0,0};
+qint8 deviceStatusArray [NUMBER_OF_PINS] = {};
 #include "receiver.h"
 #include "transmitter.h"
 #include "control.h"
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     lol.receive();
     qDebug() << "END HERE PLZ" << endl << endl;
 
-//   control lol2;
-//    lol2.getStatus(0);
+   control control;
+   control.setWrite(NUMBER_OF_PINS);
     return app.exec();
 }
