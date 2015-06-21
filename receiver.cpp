@@ -28,9 +28,13 @@ void receiver::checker()
                               &sender, &senderPort);
       qDebug() << datagram << endl ;
 
+      if(datagram == "Connect Request")
+      {
        transmitterIns.connect(datagram,sender,senderPort);
+      }
+      else {
        react(datagram);
-
+        }
 
   }
 }
