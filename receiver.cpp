@@ -36,15 +36,10 @@ void receiver::checker()
       }
       else if(datagram == "Refresh")
       {
-          qDebug() << "lol";
-
           QString l = controlIns.readPins();
-          // std::string => QByteArray
-            std::string m =     l.toStdString();
-          QByteArray byteArray(m.c_str(), m.length());
 
-          //QByteArray dataz = QByteArray::fromHex(l.toStdString());
-          QByteArray hi = "LOL";
+          std::string m =     l.toStdString();
+          QByteArray byteArray(m.c_str(), m.length());
         transmitterIns.sendDatagram(byteArray, sender,senderPort);
         qDebug() << "HI:" << byteArray;
 
@@ -63,6 +58,13 @@ void receiver::react(QByteArray datagram)
     QString stringDatagram(datagram);
     QRegularExpression rx("[ ]");
     QStringList list = stringDatagram.split(rx, QString::SkipEmptyParts);
+
+    qDebug() << list.count();
+    if(list.count() != 2)
+   {
+       qDebug() << "Not a Control Statement";
+       return;
+   }
     QString pinSel = list.at(0);
     QString onOff = list.at(1);
 
