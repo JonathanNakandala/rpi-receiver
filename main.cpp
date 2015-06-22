@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     // Starts the listener of the Program
     receiver receiveInstance;
-    Instacereceive.receive();
+    receiveInstance.receive();
 
     // Sets the GPIO pins to the output mode
     control control;
