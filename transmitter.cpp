@@ -40,8 +40,6 @@ void transmitter::pinStatus(QHostAddress clientIP, qint16 clientPort)
 void transmitter::sendDatagram(QByteArray datagram, QHostAddress clientIP, qint16 clientPort)
 {
     udpSocket = new QUdpSocket(this);
-
-
     udpSocket->writeDatagram(datagram.data(),datagram.size(),clientIP,clientPort);
 
 }

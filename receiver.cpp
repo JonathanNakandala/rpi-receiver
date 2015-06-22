@@ -59,7 +59,6 @@ void receiver::react(QByteArray datagram)
     QRegularExpression rx("[ ]");
     QStringList list = stringDatagram.split(rx, QString::SkipEmptyParts);
 
-    qDebug() << list.count();
     if(list.count() != 2)
    {
        qDebug() << "Not a Control Statement";
