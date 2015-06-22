@@ -31,7 +31,7 @@ void receiver::checker()
 
       if(datagram == "Connect Request")
       {
-       transmitterIns.connect(datagram,sender,senderPort);
+          transmitterIns.connect(datagram,sender,senderPort);
 
       }
       else if(datagram == "Refresh")
@@ -40,13 +40,13 @@ void receiver::checker()
 
           std::string m =     l.toStdString();
           QByteArray byteArray(m.c_str(), m.length());
-        transmitterIns.sendDatagram(byteArray, sender,senderPort);
-        qDebug() << "HI:" << byteArray;
+          transmitterIns.sendDatagram(byteArray, sender,senderPort);
+          qDebug() << "HI:" << byteArray;
 
       }
       else {
-       react(datagram);
-        }
+        react(datagram);
+      }
 
   }
 }

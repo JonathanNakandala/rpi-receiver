@@ -14,21 +14,21 @@ control::control()
 
 qint8 control::getStatus(qint8 pin)
 {
-  qint8 statusValue;
-  //Convert pin to string
-  QString pinNumber = QString::number(pin);
-   QStringList arguments;
+    qint8 statusValue;
+    //Convert pin to string
+    QString pinNumber = QString::number(pin);
+    QStringList arguments;
 
 
-  arguments << "read" << pinNumber;
+    arguments << "read" << pinNumber;
 
-  gpioPi.start(programGpio,arguments);
-  gpioPi.waitForFinished(2000);
+    gpioPi.start(programGpio,arguments);
+    gpioPi.waitForFinished(2000);
 
-  QString output(gpioPi.readAll());
-  statusValue = output.toInt();
-  arguments.clear();
-  return(statusValue);
+    QString output(gpioPi.readAll());
+    statusValue = output.toInt();
+    arguments.clear();
+    return(statusValue);
 
 }
 
@@ -47,7 +47,7 @@ void control::setPin(qint8 pin, qint8 value)
 
 void control::setWrite(qint8 pinTotal)
 {
-       QStringList arguments;
+    QStringList arguments;
     for (int i=0;i<pinTotal;i++)
     {
             QString i2 = QString::number(i);
@@ -61,20 +61,20 @@ void control::setWrite(qint8 pinTotal)
 
 QString control::readPins()
 {
- QString pinStatus;
+    QString pinStatus;
 
-for(int i=0; i<NUMBER_OF_PINS; i++)
- {
-     qint8 status = getStatus(i);
-     QString s = QString::number(status);
-     if(i ==NUMBER_OF_PINS - 1)
+    for(int i=0; i<NUMBER_OF_PINS; i++)
      {
-     pinStatus += s;
-     }
-     else
-     {
-        pinStatus += s +" ";
-     }
-}
+         qint8 status = getStatus(i);
+         QString s = QString::number(status);
+         if(i ==NUMBER_OF_PINS - 1)
+         {
+            pinStatus += s;
+         }
+         else
+         {
+            pinStatus += s +" ";
+         }
+    }
  return pinStatus;
 }

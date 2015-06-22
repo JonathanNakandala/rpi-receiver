@@ -17,12 +17,13 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
     qDebug() << "Start of Program" << endl;
 
-    receiver lol;
+    // Starts the listener of the Program
+    receiver receiveInstance;
+    Instacereceive.receive();
 
-    lol.receive();
-    qDebug() << "END HERE PLZ" << endl << endl;
+    // Sets the GPIO pins to the output mode
+    control control;
+    control.setWrite(NUMBER_OF_PINS);
 
-   control control;
-   control.setWrite(NUMBER_OF_PINS);
     return app.exec();
 }

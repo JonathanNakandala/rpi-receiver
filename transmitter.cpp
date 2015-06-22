@@ -8,9 +8,9 @@ transmitter::transmitter()
 }
 void transmitter::connect(QByteArray datagram, QHostAddress clientIP, qint16 clientPort)
 {
-     QByteArray connectedReply = "Connected";
+        QByteArray connectedReply = "Connected";
 
-     udpSocket = new QUdpSocket(this);
+        udpSocket = new QUdpSocket(this);
         qDebug() << "Sucessfully Connected" << endl ;
         udpSocket->writeDatagram(connectedReply.data(),connectedReply.size(),clientIP,clientPort);
         pinStatus(clientIP, clientPort);
@@ -26,7 +26,7 @@ void transmitter::pinStatus(QHostAddress clientIP, qint16 clientPort)
         int returnValue;
         returnValue = contol.getStatus(i);
         deviceStatusArray[i] = returnValue;
-      qDebug() << "Value of Pin " << i << "is" << deviceStatusArray[i] << endl;
+        qDebug() << "Value of Pin " << i << "is" << deviceStatusArray[i] << endl;
 
     }
         // Convert pin statuses to be transmitted
