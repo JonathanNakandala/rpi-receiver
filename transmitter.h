@@ -16,6 +16,7 @@ public:
     transmitter();
     void connect(QByteArray datagram, QHostAddress clientIP, qint16 clientPort);
     void pinStatus(QHostAddress clientIP, qint16 clientPort);
+    void sendDatagram(QByteArray datagram, QHostAddress clientIP, qint16 clientPort);
 private:
     QUdpSocket *udpSocket;
 };

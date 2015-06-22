@@ -18,6 +18,7 @@ void receiver::receive()
 void receiver::checker()
 {
      transmitter transmitterIns;
+     control     controlIns;
   while (udpSocket->hasPendingDatagrams()) {
       QByteArray datagram;
       datagram.resize(udpSocket->pendingDatagramSize());
@@ -31,6 +32,22 @@ void receiver::checker()
       if(datagram == "Connect Request")
       {
        transmitterIns.connect(datagram,sender,senderPort);
+
+      }
+      else if(datagram == "Refresh")
+      {
+          qDebug() << "lol";
+
+          QString l = controlIns.readPins();
+          // std::string => QByteArray
+            std::string m =     l.toStdString();
+          QByteArray byteArray(m.c_str(), m.length());
+
+          //QByteArray dataz = QByteArray::fromHex(l.toStdString());
+          QByteArray hi = "LOL";
+        transmitterIns.sendDatagram(byteArray, sender,senderPort);
+        qDebug() << "HI:" << byteArray;
+
       }
       else {
        react(datagram);

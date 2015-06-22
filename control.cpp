@@ -1,3 +1,4 @@
+#include <globalVar.h>
 #include "control.h"
 #include <qprocess.h>
 #include <QDebug>
@@ -11,7 +12,7 @@ control::control()
 {
 }
 
-int control::getStatus(qint8 pin)
+qint8 control::getStatus(qint8 pin)
 {
   qint8 statusValue;
   //Convert pin to string
@@ -56,4 +57,24 @@ void control::setWrite(qint8 pinTotal)
 
             arguments.clear();
     }
+}
+
+QString control::readPins()
+{
+ QString pinStatus;
+
+for(int i=0; i<NUMBER_OF_PINS; i++)
+ {
+     qint8 status = getStatus(i);
+     QString s = QString::number(status);
+     if(i ==NUMBER_OF_PINS - 1)
+     {
+     pinStatus += s;
+     }
+     else
+     {
+        pinStatus += s +" ";
+     }
+}
+ return pinStatus;
 }
